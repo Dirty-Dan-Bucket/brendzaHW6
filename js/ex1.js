@@ -33,3 +33,30 @@ const getCharacters = houseCode => {
       return []; // Empty array
   }
 };
+
+const houseSelect = document.getElementById("house");
+const characterList = document.getElementById("characters");
+
+// --- Fill dropdown ---
+houses.forEach(house => {
+  const option = document.createElement("option");
+  option.value = house.code;
+  option.textContent = house.name;
+  houseSelect.appendChild(option);
+});
+
+// --- When user selects a house ---
+houseSelect.addEventListener("change", () => {
+  const selected = houseSelect.value;
+  const chars = getCharacters(selected);
+
+  // Clear previous list
+  characterList.innerHTML = "";
+
+  // Add new characters
+  chars.forEach(name => {
+    const li = document.createElement("li");
+    li.textContent = name;
+    characterList.appendChild(li);
+  });
+});
