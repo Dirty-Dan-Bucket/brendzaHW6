@@ -1,3 +1,4 @@
+// Exercise 3
 //Declare studentList Array
 const studentList = [
   {
@@ -56,3 +57,26 @@ const cLastNameResults = studentList
 
 //Output
 console.log(cLastNameResults);
+
+// Exercise 4
+// Add extra credit
+for (let i = 0; i < studentList.length; i++) {
+    studentList[i].scores = studentList[i].scores.map(score => score + 5);
+}
+
+// Add missing exam score
+for (let i = 0; i < studentList.length; i++) {
+    const scores = studentList[i].scores;
+    const avg = scores.reduce((sum, s) => sum + s, 0) / scores.length;
+
+    // Add the average score to the existing array
+    studentList[i].scores.push(avg);
+}
+
+// Display results
+for (let i = 0; i < studentList.length; i++) {
+    const s = studentList[i];
+    console.log(`${s.firstName} ${s.lastName}: [${s.scores.join(", ")}]`);
+}
+
+
